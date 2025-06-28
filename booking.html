@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl overflow-hidden p-8">
+        <div class="md:flex md:items-center mb-8">
+            <div class="md:w-1/3 p-4 rounded-lg bg-navy-blue text-white flex flex-col items-center text-center">
+
+                <div class="flex items-center text-sm font-medium text-navy-lighter mb-2">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    VIP EXCLUSIVE
+                </div>
+                <p class="text-sm text-gray-400">Premium Experience</p>
+            </div>
+
+            <div class="md:w-2/3 md:pl-8 mt-6 md:mt-0">
+                <h1 class="text-3xl font-extrabold text-gray-900 mb-4">Book Your Experience</h1>
+                <div
+                    class="bg-navy-blue-light border border-navy-blue-dark rounded-lg p-4 flex justify-between items-center mb-6">
+                    <span class="text-navy-blue-darker font-semibold">Booking Fee</span>
+                    <span class="text-navy-blue-darker text-xl font-bold">$2,000.00</span>
+                </div>
+
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex-1 flex flex-col items-center step-indicator active" data-step="1">
+                        <div class="circle">1</div>
+                        <span class="text">Your Details</span>
+                    </div>
+                    <div class="progress-line">
+                        <div class="progress-line-fill" id="progress-line-1"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center step-indicator" data-step="2">
+                        <div class="circle">2</div>
+                        <span class="text">Booking Info</span>
+                    </div>
+                    <div class="progress-line">
+                        <div class="progress-line-fill" id="progress-line-2"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center step-indicator" data-step="3">
+                        <div class="circle">3</div>
+                        <span class="text">Confirmation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="bookingForm">
+            <div id="step1" class="form-step">
+                <h3 class="text-xl font-semibold text-gray-900 mb-6">1 Personal Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name<span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="fullName" name="fullName"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2"
+                            required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address<span
+                                class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2"
+                            required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number<span
+                                class="text-red-500">*</span></label>
+                        <input type="tel" id="phone" name="phone"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2"
+                            required>
+                    </div>
+                    <div>
+                        <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                        <input type="text" id="country" name="country"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="specialRequests" class="block text-sm font-medium text-gray-700 mb-1">Special
+                            Requests</label>
+                        <textarea id="specialRequests" name="specialRequests" rows="3"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2"></textarea>
+                        <p class="mt-2 text-sm text-gray-500">Tell us about any special requirements or preferences</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-8">
+                    <button type="button" id="continue1"
+                        class="px-6 py-3 bg-navy-blue text-white font-semibold rounded-md shadow-md hover:bg-navy-blue-dark focus:outline-none focus:ring-2 focus:ring-navy-blue focus:ring-offset-2">Continue
+                        &rarr;</button>
+                </div>
+            </div>
+
+            <div id="step2" class="form-step hidden">
+                <h3 class="text-xl font-semibold text-gray-900 mb-6">2 Booking Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="bookingType" class="block text-sm font-medium text-gray-700 mb-1">Booking
+                            Type</label>
+                        <select id="bookingType" name="bookingType"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2">
+                            <option>Fan Card Registration</option>
+                            <option>VIP Meet & Greet</option>
+                            <option>Concert Ticket</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="preferredDate" class="block text-sm font-medium text-gray-700 mb-1">Preferred
+                            Date</label>
+                        <input type="date" id="preferredDate" name="preferredDate"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2">
+                    </div>
+                    <div>
+                        <label for="paymentMethod" class="block text-sm font-medium text-gray-700 mb-1">Payment
+                            Method</label>
+                        <select id="paymentMethod" name="paymentMethod"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-navy-blue focus:ring-navy-blue p-2">
+                            <option>USDT</option>
+                            <option>Bank Transfer</option>
+                            <option>Credit Card</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="totalFee" class="block text-sm font-medium text-gray-700 mb-1">Total Fee</label>
+                        <input type="text" id="totalFee" name="totalFee"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100 p-2"
+                            value="$2,000.00" readonly>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-8">
+                    <button type="button" id="back2"
+                        class="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-navy-blue focus:ring-offset-2">&larr;
+                        Back</button>
+                    <button type="button" id="continue2"
+                        class="px-6 py-3 bg-navy-blue text-white font-semibold rounded-md shadow-md hover:bg-navy-blue-dark focus:outline-none focus:ring-2 focus:ring-navy-blue focus:ring-offset-2">Continue
+                        &rarr;</button>
+                </div>
+            </div>
+
+            <div id="step3" class="form-step hidden">
+                <h3 class="text-xl font-semibold text-gray-900 mb-6">3 Payment Confirmation</h3>
+                <div class="mb-6 p-4 bg-navy-lighter border border-navy-blue-dark rounded-lg text-navy-blue-darker">
+                    <p class="font-semibold mb-2">Payment Instructions</p>
+                    <p class="text-sm">Please complete your payment and upload the transaction proof below.</p>
+                </div>
+
+                <div class="mb-8">
+                    <label for="paymentProof" class="block text-sm font-medium text-gray-700 mb-2">Upload Payment
+                        Proof<span class="text-red-500">*</span></label>
+                    <div id="drop-area" class="custom-file-input">
+                        <input type="file" id="paymentProof" name="paymentProof"
+                            accept="image/png, image/jpeg, application/pdf" required>
+                        <p class="text-gray-500 text-sm mb-2">Click to upload or drag and drop</p>
+                        <p class="text-xs text-gray-400">PNG, JPG, PDF up to 5MB</p>
+                        <div id="file-preview" class="mt-4 hidden">
+                            <span class="text-navy-blue font-medium" id="file-name"></span>
+                            <button type="button" id="remove-file"
+                                class="ml-2 text-red-500 hover:text-red-700 text-sm">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-4">Booking Summary</h4>
+                    <dl class="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
+                        <div class="col-span-1">
+                            <dt class="font-medium text-gray-600">Celebrity:</dt>
+                            <dd class="text-gray-900" id="summaryCelebrity">IB Quake</dd>
+                        </div>
+                        <div class="col-span-1">
+                            <dt class="font-medium text-gray-600">Booking Fee:</dt>
+                            <dd class="text-gray-900 font-bold" id="summaryBookingFee">$2,000.00</dd>
+                        </div>
+                        <div class="col-span-1">
+                            <dt class="font-medium text-gray-600">Your Name:</dt>
+                            <dd class="text-gray-900" id="summaryFullName"></dd>
+                        </div>
+                        <div class="col-span-1">
+                            <dt class="font-medium text-gray-600">Your Email:</dt>
+                            <dd class="text-gray-900" id="summaryEmail"></dd>
+                        </div>
+                        <div class="col-span-1">
+                            <dt class="font-medium text-gray-600">Payment Details:</dt>
+                            <dd class="text-gray-900" id="summaryPaymentMethod"></dd>
+                        </div>
+                        <div class="col-span-1">
+                            <dt class="font-medium text-gray-600">Wallet Address:</dt>
+                            <dd class="text-gray-900 break-words" id="summaryWalletAddress">
+                                0x123456789abcdefABCDEF123456789abcdef</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" id="back3"
+                        class="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-navy-blue focus:ring-offset-2">&larr;
+                        Back</button>
+                    <button type="submit" id="confirmBooking"
+                        class="px-6 py-3 bg-orange-500 text-white font-semibold rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Confirm
+                        Booking</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="messageBox" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
+                <p id="messageText" class="text-lg font-semibold text-gray-800 mb-4"></p>
+                <button id="closeMessage"
+                    class="px-4 py-2 bg-navy-blue text-white rounded-md hover:bg-navy-blue-dark">OK</button>
+            </div>
+        </div>
+
+        <div class="backtohome">
+            <a href="/index.html">Back to Home</a>
+        </div>
+
+    </div>
+
+    <script src="/home.js"></script>
+</body>
+
+</html>
